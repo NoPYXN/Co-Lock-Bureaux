@@ -17,9 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer et sécuriser les données du formulaire
     $title = $conn->real_escape_string($_POST['title']);
     $description = $conn->real_escape_string($_POST['description']);
-    $price = $conn->real_escape_string($_POST['price']);
+    $price_hour = $conn->real_escape_string($_POST['price_hour']);
+    $price_day = $conn->real_escape_string($_POST['price_day']);
+    $price_week = $conn->real_escape_string($_POST['price_week']);
     $city = $conn->real_escape_string($_POST['city']);
     $address = $conn->real_escape_string($_POST['address']);
+    $email = $conn->real_escape_string($_POST['email']);
     
     // Gestion de l'image uploadée
     $image = NULL;
@@ -44,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Requête SQL pour insérer les données
-    $sql = "INSERT INTO annonces (title, description, price, city, address, image)
-            VALUES ('$title', '$description', '$price', '$city', '$address', '$image')";
+    $sql = "INSERT INTO annonces (title, description, price_hour, price_day, price_week, city, address, image, email)
+            VALUES ('$title', '$description', '$price_hour', '$price_day', '$price_week', '$city', '$address', '$image', '$email')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Nouvelle annonce créée avec succès";
