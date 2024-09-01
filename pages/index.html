@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Lock</title>
+    <title>Co-Lock Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -18,8 +18,9 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Accueil</a>
-        <a href="nouvelle_annonce.html">Nouvelle Annonce</a>
-        <a href="#">Services</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="#">Créer une annonce (Entreprise)</a>
+        <a href="#">voir les entreprises</a>
         <a href="#">Contact</a>
     </div>
 
@@ -32,7 +33,7 @@
     <script> 
 
         function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "20%";
         }
 
         // Fonction pour fermer le menu latéral
@@ -70,14 +71,13 @@
         }
 
         // Exemple d'utilisation : ajouter des cartes à la page
-        createCard('image1.jpg', 'Stylish Sneakers', '75 €');
-        createCard('image2.jpg', 'Sports Backpack', '40 €');
-        createCard('image3.jpg', 'Stylish Sneakers', '100 €');
-        createCard('image4.jpg', 'Sports Backpack', '95 €');
-        createCard('company1.png', 'Company 1', '');
-        createCard('company2.png', 'Company 2', '');
-        createCard('company3.png', 'Company 3', '');
-        createCard('company4.png', 'Company 4', '');
+        createCard('../images/Bureau1.jpg', 'Bureau numéro 1', '75 €');
+        createCard('../images/Bureau2.jpg', 'Bureau numéro 2', '40 €');
+        createCard('../images/Bureau3.jpg', 'Bureau bien guez', '2 €');
+        createCard('../images/Bureau4.png', 'Bureau numéro 4', '95 €');
+        createCard('../images/Bureau5.jpg', 'Bureau numéro 5', '100 €');
+        createCard('../images/Bureau6.jpg', 'Bureau numéro 6', '200 €');
+        createCard('../images/Bureau7.jpg', 'Bureau numéro 7', '500 €');
     </script>
 
 </body>
