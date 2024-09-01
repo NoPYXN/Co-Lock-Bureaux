@@ -29,55 +29,53 @@
 
     <a href="#" class="view-all">View All</a>
 
-    <script> 
-
+    <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
 
-        // Fonction pour fermer le menu latéral
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
 
-
         // Fonction pour créer une nouvelle carte
         function createCard(imageSrc, title, price) {
-            // Créer un élément div pour la carte
             const card = document.createElement('div');
             card.className = 'card';
 
-            // Créer l'élément image
             const img = document.createElement('img');
             img.src = imageSrc;
             img.alt = title;
 
-            // Créer le titre
             const h3 = document.createElement('h3');
             h3.textContent = title;
 
-            // Créer le prix (ou remplacer par un nom d'entreprise)
             const p = document.createElement('p');
-            p.textContent = price;
+            p.textContent = price ? price + ' €' : '';
 
-            // Ajouter les éléments à la carte
             card.appendChild(img);
             card.appendChild(h3);
             card.appendChild(p);
 
-            // Ajouter la carte au conteneur
             document.getElementById('cards-container').appendChild(card);
         }
 
-        // Exemple d'utilisation : ajouter des cartes à la page
-        createCard('image1.jpg', 'Stylish Sneakers', '75 €');
-        createCard('image2.jpg', 'Sports Backpack', '40 €');
-        createCard('image3.jpg', 'Stylish Sneakers', '100 €');
-        createCard('image4.jpg', 'Sports Backpack', '95 €');
-        createCard('company1.png', 'Company 1', '');
-        createCard('company2.png', 'Company 2', '');
-        createCard('company3.png', 'Company 3', '');
-        createCard('company4.png', 'Company 4', '');
+        // Fonction pour charger les annonces
+        async function loadAnnonces() {
+            try {
+                const response = await fetch('connexion.php'); // Le fichier PHP qui retourne les annonces
+                const annonces = await response.json();
+
+                annonces.forEach(annonce => {
+                    createCard(annonce.image, annonce.title, annonce.price);
+                });
+            } catch (error) {
+                console.error('Erreur lors du chargement des annonces:', error);
+            }
+        }
+
+        // Charger les annonces au chargement de la page
+        loadAnnonces();
     </script>
 
 </body>
