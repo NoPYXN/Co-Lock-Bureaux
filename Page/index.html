@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Lock</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+    <div class="header">
+        <span class="menu-icon" onclick="openNav()">&#9776;</span>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo">
+        <div class="profile-icon">&#128100;</div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Accueil</a>
+        <a href="nouvelle_annonce.html">Nouvelle Annonce</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container" id="cards-container">
+        <!-- Les cartes seront insérées ici dynamiquement -->
+    </div>
+
+    <a href="#" class="view-all">View All</a>
+
+    <script> 
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        // Fonction pour fermer le menu latéral
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+
+        // Fonction pour créer une nouvelle carte
+        function createCard(imageSrc, title, price) {
+            // Créer un élément div pour la carte
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            // Créer l'élément image
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = title;
+
+            // Créer le titre
+            const h3 = document.createElement('h3');
+            h3.textContent = title;
+
+            // Créer le prix (ou remplacer par un nom d'entreprise)
+            const p = document.createElement('p');
+            p.textContent = price;
+
+            // Ajouter les éléments à la carte
+            card.appendChild(img);
+            card.appendChild(h3);
+            card.appendChild(p);
+
+            // Ajouter la carte au conteneur
+            document.getElementById('cards-container').appendChild(card);
+        }
+
+        // Exemple d'utilisation : ajouter des cartes à la page
+        createCard('image1.jpg', 'Stylish Sneakers', '75 €');
+        createCard('image2.jpg', 'Sports Backpack', '40 €');
+        createCard('image3.jpg', 'Stylish Sneakers', '100 €');
+        createCard('image4.jpg', 'Sports Backpack', '95 €');
+        createCard('company1.png', 'Company 1', '');
+        createCard('company2.png', 'Company 2', '');
+        createCard('company3.png', 'Company 3', '');
+        createCard('company4.png', 'Company 4', '');
+    </script>
+
+</body>
+</html>
