@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affichage de l'Annonce</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Formulaire.css">
 </head>
 <body>
-    <div class="header">
-        <div class="menu-icon">&#9776;</div>
-        <img src="../images/logo.png" alt="Co-Lock Logo">
-        <div class="profile-icon">&#128100;</div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Accueil</a>
+        <a href="EntrepriseListe.html">Voir les entreprises</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Contact.html">Contact</a>
     </div>
 
     <div class="container">
