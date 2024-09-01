@@ -1,39 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affichage de l'Annonce</title>
-    <link rel="stylesheet" href="../css/Formulaire.css">
-</head>
-<body>
-    <div class="header">
-        <div class="menu-icon">&#9776;</div>
-        <img src="../images/logo.png" alt="Co-Lock Logo">
-        <div class="profile-icon">&#128100;</div>
-    </div>
+<?php
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root"; // Remplacez par votre nom d'utilisateur MySQL
+$password = "root"; // Remplacez par votre mot de passe MySQL
+$dbname = "co_lock"; // Remplacez par le nom de votre base de données
 
-    <div class="container">
-        <h1>Détails de l'Annonce</h1>
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Récupérer les données du formulaire
-            $title = htmlspecialchars($_POST['title']);
-            $description = htmlspecialchars($_POST['description']);
-            $price = htmlspecialchars($_POST['price']);
-            $city = htmlspecialchars($_POST['city']);
-            $address = htmlspecialchars($_POST['address']);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Affichage des données
-            echo "<div class='form-group'><strong>Nom de l'annonce:</strong> $title</div>";
-            echo "<div class='form-group'><strong>Description:</strong> $description</div>";
-            echo "<div class='form-group'><strong>Prix:</strong> $price €</div>";
-            echo "<div class='form-group'><strong>Ville:</strong> $city</div>";
-            echo "<div class='form-group'><strong>Adresse:</strong> $address</div>";
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupérer et sécuriser les données du formulaire
+    $title = $conn->real_escape_string($_POST['title']);
+    $description = $conn->real_escape_string($_POST['description']);
+    $price = $conn->real_escape_string($_POST['price']);
+    $city = $conn->real_escape_string($_POST['city']);
+    $address = $conn->real_escape_string($_POST['address']);
+    
+    // Gestion de l'image uploadée
+    $image = NULL;
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $imageName = basename($_FILES["image"]["name"]);
+        $targetDir = "../images/"; // Dossier où l'image sera enregistrée
+        $targetFilePath = $targetDir . $imageName;
+
+        // Vérifier si le fichier est une image valide
+        $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
+        if($check !== false) {
+            // Déplacer l'image vers le dossier cible
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
+                $image = $imageName; // Enregistrer le nom de l'image en base de données
+            } else {
+                echo "Erreur lors du téléchargement de l'image.";
+            }
         } else {
-            echo "<p>Aucune donnée soumise.</p>";
+            echo "Le fichier n'est pas une image valide.";
         }
-        ?>
-    </div>
-</body>
-</html>
+    }
+
+    // Requête SQL pour insérer les données
+    $sql = "INSERT INTO annonces (title, description, price, city, address, image)
+            VALUES ('$title', '$description', '$price', '$city', '$address', '$image')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Nouvelle annonce créée avec succès";
+    } else {
+        echo "Erreur: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>

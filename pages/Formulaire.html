@@ -24,7 +24,7 @@
 
     <div class="container">
         <h1>Créer une Nouvelle Annonce</h1>
-        <form action="Annonces.php" method="POST">
+        <form action="Annonces.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Nom de l'annonce</label>
                 <input type="text" id="title" name="title" placeholder="Entrez le nom de l'annonce" required>
@@ -56,12 +56,10 @@
     </div>
 
     <script> 
-
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
 
-        // Fonction pour fermer le menu latéral
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
