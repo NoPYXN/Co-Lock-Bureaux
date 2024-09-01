@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail de l'annonce</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/AnnonceView.css">
+</head>
+<body>
+
+    <div class="header">
+        <span class="menu-icon" onclick="openNav()">&#9776;</span>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo">
+        <div class="profile-icon">&#128100;</div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.php">Accueil</a>
+        <a href="EntrepriseListe.php">Voir les entreprises</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="card-detail">
+            <div class="card-image">
+                <img src="../images/Bureau4.png" alt="Nom de l'annonce">
+            </div>
+            <div class="card-content">
+                <h1>Nom de l'annonce</h1>
+                <p class="description">Ceci est une description détaillée de l'annonce. Elle peut inclure les caractéristiques de l'espace, les commodités disponibles, et tout autre détail pertinent pour les utilisateurs intéressés par la location.</p>
+                <div class="price-list">
+                    <p><strong>Prix par heure : </strong>15 €</p>
+                    <p><strong>Prix par jour : </strong>100 €</p>
+                    <p><strong>Prix par semaine : </strong>600 €</p>
+                </div>
+                <p><strong>Ville : </strong>Paris</p>
+                <p><strong>Adresse : </strong>123 Rue Exemple, 75001 Paris</p>
+                <p><strong>Email du propriétaire : </strong><a href="mailto:proprietaire@example.com">proprietaire@example.com</a></p>
+                <button class="contact-owner">Contacter le propriétaire</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+    </footer>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "20%";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>

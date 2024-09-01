@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.card-detail {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    max-width: 1200px; /* Augmentation de la largeur max */
+    width: 100%;
+    height: auto; /* Permet à la carte de s'étendre verticalement si nécessaire */
+}
+
+.card-image {
+    flex: 1.5; /* Augmenter la taille de la photo */
+    margin-right: 30px; /* Espacement augmenté pour plus de confort visuel */
+}
+
+.card-image img {
+    width: 570px;
+    height: 324px;
+    border-radius: 8px;
+}
+
+.card-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content h1 {
+    margin-bottom: 20px;
+    color: #0066CC;
+    font-size: 2rem; /* Taille de police augmentée pour le titre */
+}
+
+.card-content p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 1.1rem; /* Augmente légèrement la taille du texte */
+}
+
+.price-list p {
+    font-size: 1.2rem;
+    color: #007BFF;
+    margin: 15px 0;
+}
+
+.contact-owner {
+    background-color: #0066CC;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    align-self: start;
+    font-size: 1.1rem; /* Taille du texte du bouton augmentée */
+}
+
+.contact-owner:hover {
+    background-color: #005BB5;
+}
