@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Lock</title>
+    <title>Co-Lock Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -18,8 +18,9 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Accueil</a>
-        <a href="nouvelle_annonce.html">Nouvelle Annonce</a>
-        <a href="#">Services</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="#">Créer une annonce (Entreprise)</a>
+        <a href="#">voir les entreprises</a>
         <a href="#">Contact</a>
     </div>
 
@@ -31,7 +32,7 @@
 
     <script>
         function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "20%";
         }
 
         function closeNav() {
