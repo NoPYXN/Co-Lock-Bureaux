@@ -18,10 +18,10 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Accueil</a>
+        <a href="EntrepriseListe.html">Voir les entreprises</a>
         <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
-        <a href="#">Créer une annonce (Entreprise)</a>
-        <a href="#">voir les entreprises</a>
-        <a href="#">Contact</a>
+        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Contact.html">Contact</a>
     </div>
 
     <div class="container" id="cards-container">

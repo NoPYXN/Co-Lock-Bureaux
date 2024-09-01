@@ -1,3 +1,21 @@
+.header {
+    background-color: #0066CC;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header img {
+    height: 50px;
+}
+
+.header .menu-icon, .header .profile-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
 /* Style pour la barre latérale */
 .sidenav {
     height: 100%;
@@ -30,4 +48,8 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.form-group.button-group {
+    text-align: center;
 }
