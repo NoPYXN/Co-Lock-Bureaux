@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Lock Bureaux</title>
+    <title>Co-Loc-k Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -29,6 +29,11 @@
     </div>
 
     <a href="#" class="view-all">View All</a>
+
+
+    <footer>
+        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+    </footer>
 
     <script>
         function openNav() {
