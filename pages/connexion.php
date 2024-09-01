@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Requête pour récupérer les annonces
-$sql = "SELECT id, title, price, image FROM annonces";
+$sql = "SELECT * FROM annonces";
 $result = $conn->query($sql);
 
 // Tableau pour stocker les annonces

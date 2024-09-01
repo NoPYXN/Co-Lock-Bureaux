@@ -50,7 +50,7 @@
             card.className = 'card';
 
             const img = document.createElement('img');
-            img.src = imageSrc;
+            img.src = "../images/" + imageSrc; // Ajout du chemin correct pour les images
             img.alt = title;
 
             const h3 = document.createElement('h3');
