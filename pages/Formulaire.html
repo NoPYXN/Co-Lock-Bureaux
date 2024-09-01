@@ -35,8 +35,16 @@
                 <textarea id="description" name="description" placeholder="Entrez la description de l'annonce" required></textarea>
             </div>
             <div class="form-group">
-                <label for="price">Prix</label>
-                <input type="number" id="price" name="price" placeholder="Entrez le prix en €" required>
+                <label for="price_hour">Prix par heure</label>
+                <input type="number" id="price_hour" name="price_hour" placeholder="Entrez le prix pour une heure en €" required>
+            </div>
+            <div class="form-group">
+                <label for="price_day">Prix par jour</label>
+                <input type="number" id="price_day" name="price_day" placeholder="Entrez le prix pour un jour en €" required>
+            </div>
+            <div class="form-group">
+                <label for="price_week">Prix par semaine</label>
+                <input type="number" id="price_week" name="price_week" placeholder="Entrez le prix pour une semaine en €" required>
             </div>
             <div class="form-group">
                 <label for="city">Ville</label>
@@ -47,6 +55,10 @@
                 <input type="text" id="address" name="address" placeholder="Entrez l'adresse" required>
             </div>
             <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Entrez l'adresse" required>
+            </div>
+            <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" id="image" name="image" accept="image/*">
             </div>
@@ -55,6 +67,10 @@
             </div>
         </form>
     </div>
+
+    <footer>
+        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+    </footer>
 
     <script> 
         function openNav() {
