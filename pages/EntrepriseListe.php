@@ -69,7 +69,7 @@
         // Fonction pour charger les annonces
         async function loadAnnonces() {
             try {
-                const response = await fetch('connexion.php'); // Le fichier PHP qui retourne les annonces
+                const response = await fetch('connexion_entreprise.php'); // Le fichier PHP qui retourne les annonces
                 const annonces = await response.json();
 
                 annonces.forEach(annonce => {

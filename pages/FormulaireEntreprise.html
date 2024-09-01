@@ -25,7 +25,7 @@
 
     <div class="container">
         <h1>Créer une Nouvelle Annonce</h1>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="Annonces_entreprise.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="companyName">Nom de l'entreprise</label>
                 <input type="text" id="companyName" name="companyName" placeholder="Entrez le nom de l'entreprise" required>
@@ -33,6 +33,10 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" placeholder="Entrez la description de l'entreprise" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="text" id="email" name="email" placeholder="Entrez l'adresse email" required>
             </div>
             <div class="form-group">
                 <label for="city">Ville</label>
