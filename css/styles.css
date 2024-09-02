@@ -71,8 +71,6 @@ footer {
     text-align: center;
     padding: 10px;
     margin-top: auto; /* Assure que le footer est en bas de la page */
-    position: relative;
-    z-index: 1;
 }
 
 #particles-js {
@@ -84,14 +82,4 @@ footer {
     z-index: -1;
     pointer-events: none;
     background-color: #ffffff;
-}
-
-.container {
-    flex: 1; /* Permet au container de prendre l'espace restant */
-    padding: 20px;
-    margin: 20px auto; /* Centre le container */
-    max-width: 800px;
-    background: #bebebe;
-    border-radius: 8px;
-    box-sizing: border-box; /* Inclut le padding dans la largeur */
 }
