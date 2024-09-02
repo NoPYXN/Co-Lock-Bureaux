@@ -1,9 +1,11 @@
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
     padding: 20px;
+    box-sizing: border-box; /* Assure que le padding n'ajoute pas d'espace supplémentaire */
 }
 
 .card-detail {
@@ -18,13 +20,15 @@
 }
 
 .card-image {
-    flex: 1.5; /* Augmenter la taille de la photo */
+    display: flex;
     margin-right: 30px; /* Espacement augmenté pour plus de confort visuel */
+    align-items: center;
 }
 
 .card-image img {
     width: 570px;
     height: 324px;
+    justify-content: center;
     border-radius: 8px;
 }
 

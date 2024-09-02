@@ -5,60 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Co-Lock Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .sidenav a {
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-        }
-        .sidenav a:hover {
-            background-color: #575757;
-        }
-        .button-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .button-home:hover {
-            background-color: #0056b3;
-        }
-        .message {
-            font-size: 18px;
-            color: #28a745;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/Annonces.css">
 </head>
 <body>
 
-    <div class="header">
+<div class="header">
         <span class="menu-icon" onclick="openNav()">&#9776;</span>
-        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo">
-        <div class="profile-icon">&#128100;</div>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
 
+    <div id="particles-js"></div>
+    
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Accueil</a>
@@ -143,5 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a href="index.php" class="button-home">Retour à l'accueil</a>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../script/particles-config.js"></script>
 </body>
 </html>

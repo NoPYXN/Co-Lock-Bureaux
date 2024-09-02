@@ -11,9 +11,11 @@
 
     <div class="header">
         <span class="menu-icon" onclick="openNav()">&#9776;</span>
-        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo">
-        <div class="profile-icon">&#128100;</div>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
+
+    <div id="particles-js"></div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -83,6 +85,7 @@
         // Charger les annonces au chargement de la page
         loadAnnonces();
     </script>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../script/particles-config.js"></script>
 </body>
 </html>
