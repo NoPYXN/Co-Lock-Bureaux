@@ -38,49 +38,47 @@
     </footer>
 
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "20%";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    // Fonction pour créer une nouvelle carte
+    function createCard(imageSrc, title) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const img = document.createElement('img');
+    img.src = imageSrc ? "../images/" + imageSrc : "../images/Bureau1.jpg"; // Utilisation d'une image par défaut
+    img.alt = title;
+
+    const h3 = document.createElement('h3');
+    h3.textContent = title;
+
+    card.appendChild(img);
+    card.appendChild(h3);
+
+    document.getElementById('cards-container').appendChild(card);
+}
+
+    // Fonction pour charger les annonces
+    async function loadAnnonces() {
+        try {
+            const response = await fetch('connexion_entreprise.php'); // Assurez-vous que ce fichier existe et fonctionne
+            const annonces = await response.json();
+
+            console.log(annonces);
+
+            annonces.forEach(annonce => {
+                createCard(annonce.image, annonce.title);
+            });
+        } catch (error) {
+            console.error('Erreur lors du chargement des annonces:', error);
         }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-
-        // Fonction pour créer une nouvelle carte
-        function createCard(imageSrc, title, price) {
-            const card = document.createElement('div');
-            card.className = 'card';
-
-            const img = document.createElement('img');
-            img.src = "../images/" + imageSrc; // Ajout du chemin correct pour les images
-            img.alt = title;
-
-            const h3 = document.createElement('h3');
-            h3.textContent = title;
-
-            const p = document.createElement('p');
-            p.textContent = price ? price + ' €' : '';
-
-            card.appendChild(img);
-            card.appendChild(h3);
-            card.appendChild(p);
-
-            document.getElementById('cards-container').appendChild(card);
-        }
-
-        // Fonction pour charger les annonces
-        async function loadAnnonces() {
-            try {
-                const response = await fetch('connexion_entreprise.php'); // Le fichier PHP qui retourne les annonces
-                const annonces = await response.json();
-
-                annonces.forEach(annonce => {
-                    createCard(annonce.image, annonce.title, annonce.price);
-                });
-            } catch (error) {
-                console.error('Erreur lors du chargement des annonces:', error);
-            }
-        }
+    }
 
         // Charger les annonces au chargement de la page
         loadAnnonces();
