@@ -48,30 +48,38 @@
 
         // Fonction pour créer une nouvelle carte
         function createCard(imageSrc, title, price) {
-            const card = document.createElement('div');
+            // Crée un conteneur pour la carte
+            const card = document.createElement('a');
             card.className = 'card';
+            card.href = 'AnnoncesView.html'; // Lien vers la page d'annonce
 
+            // Crée l'image
             const img = document.createElement('img');
             img.src = "../images/" + imageSrc; // Ajout du chemin correct pour les images
             img.alt = title;
 
+            // Crée le titre
             const h3 = document.createElement('h3');
             h3.textContent = title;
 
+            // Crée le prix
             const p = document.createElement('p');
             p.textContent = price ? price + ' €' : '';
 
+            // Ajoute les éléments à la carte
             card.appendChild(img);
             card.appendChild(h3);
             card.appendChild(p);
 
+            // Ajoute la carte au conteneur
             document.getElementById('cards-container').appendChild(card);
         }
+
 
         // Fonction pour charger les annonces
         async function loadAnnonces() {
             try {
-                const response = await fetch('connexion.php'); // Le fichier PHP qui retourne les annonces
+                const response = await fetch('../scriptPhp/connexion.php'); // Le fichier PHP qui retourne les annonces
                 const annonces = await response.json();
 
                 annonces.forEach(annonce => {
@@ -86,6 +94,6 @@
         loadAnnonces();
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="../script/particles-config.js"></script>
+    <script src="../scriptJs/particles-config.js"></script>
 </body>
 </html>

@@ -71,8 +71,6 @@ footer {
     text-align: center;
     padding: 10px;
     margin-top: auto; /* Assure que le footer est en bas de la page */
-    position: relative;
-    z-index: 1;
 }
 
 #particles-js {
