@@ -47,11 +47,11 @@
         }
 
         // Fonction pour créer une nouvelle carte
-        function createCard(imageSrc, title, price) {
+        function createCard(imageSrc, title, price, id) {
             // Crée un conteneur pour la carte
             const card = document.createElement('a');
             card.className = 'card';
-            card.href = 'AnnoncesView.html'; // Lien vers la page d'annonce
+            card.href = `AnnoncesView.html?id=${id}`; // Ajoute l'identifiant à l'URL
 
             // Crée l'image
             const img = document.createElement('img');
@@ -76,6 +76,7 @@
         }
 
 
+
         // Fonction pour charger les annonces
         async function loadAnnonces() {
             try {
@@ -83,7 +84,7 @@
                 const annonces = await response.json();
 
                 annonces.forEach(annonce => {
-                    createCard(annonce.image, annonce.title, annonce.price);
+                    createCard(annonce.image, annonce.title, annonce.price, annonce.id); // Passe l'identifiant
                 });
             } catch (error) {
                 console.error('Erreur lors du chargement des annonces:', error);
