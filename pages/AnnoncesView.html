@@ -40,7 +40,37 @@
                 <p><strong>Ville : </strong>Paris</p>
                 <p><strong>Adresse : </strong>123 Rue Exemple, 75001 Paris</p>
                 <p><strong>Email du propriétaire : </strong><a href="mailto:proprietaire@example.com">proprietaire@example.com</a></p>
-                <button class="contact-owner">Contacter le propriétaire</button>
+
+                <!-- Formulaire de réservation -->
+                <form action="reservation.php" method="POST" id="reservationForm">
+                    <p><strong>Réserver pour :</strong></p>
+                    <label>
+                        <input type="radio" name="reservation_type" value="heure" required onclick="updateReservationFields()">
+                        Par heure
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="reservation_type" value="jour" onclick="updateReservationFields()">
+                        Par jour
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="reservation_type" value="semaine" onclick="updateReservationFields()">
+                        Par semaine
+                    </label>
+                    <br>
+
+                    <!-- Sélecteurs de date/durée -->
+                    <div id="datePickerContainer">
+                        <!-- Le contenu est généré dynamiquement -->
+                    </div>
+
+                    <!-- Estimation du prix -->
+                    <p id="priceEstimate"><strong>Estimation du prix :</strong> <span id="estimatedPrice">0</span> €</p>
+
+                    <input type="hidden" name="annonce_id" value="1"> <!-- Cet ID devrait être dynamique -->
+                    <button type="submit" class="contact-owner">Réserver</button>
+                </form>
             </div>
         </div>
     </div>
@@ -56,6 +86,76 @@
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function updateReservationFields() {
+            const reservationType = document.querySelector('input[name="reservation_type"]:checked').value;
+            const datePickerContainer = document.getElementById('datePickerContainer');
+            datePickerContainer.innerHTML = ''; // Reset du contenu
+
+            let datePickerHTML = '';
+            if (reservationType === 'heure') {
+                datePickerHTML = `
+                    <label for="reservationDate">Date de réservation :</label>
+                    <input type="date" id="reservationDate" name="reservationDate" onchange="calculatePrice()">
+                    <br>
+                    <label for="startTime">Heure de début :</label>
+                    <input type="time" id="startTime" name="startTime" onchange="calculatePrice()">
+                    <br>
+                    <label for="endTime">Heure de fin :</label>
+                    <input type="time" id="endTime" name="endTime" onchange="calculatePrice()">
+                `;
+            } else if (reservationType === 'jour' || reservationType === 'semaine') {
+                datePickerHTML = `
+                    <label for="startDate">Date de début :</label>
+                    <input type="date" id="startDate" name="startDate" onchange="calculatePrice()">
+                    <br>
+                    <label for="endDate">Date de fin :</label>
+                    <input type="date" id="endDate" name="endDate" onchange="calculatePrice()">
+                `;
+            }
+
+            datePickerContainer.innerHTML = datePickerHTML;
+        }
+
+        function calculatePrice() {
+            const reservationType = document.querySelector('input[name="reservation_type"]:checked').value;
+            let price = 0;
+
+            if (reservationType === 'heure') {
+                const startTime = document.getElementById('startTime').value;
+                const endTime = document.getElementById('endTime').value;
+                const reservationDate = document.getElementById('reservationDate').value;
+
+                if (startTime && endTime && reservationDate) {
+                    const start = new Date(`${reservationDate}T${startTime}`);
+                    const end = new Date(`${reservationDate}T${endTime}`);
+
+                    const diffTime = Math.abs(end - start);
+                    const diffHours = diffTime / (1000 * 60 * 60);
+                    price = diffHours * 15; // Prix par heure
+                }
+            } else if (reservationType === 'jour') {
+                const startDate = new Date(document.getElementById('startDate').value);
+                const endDate = new Date(document.getElementById('endDate').value);
+
+                if (startDate && endDate) {
+                    const diffTime = Math.abs(endDate - startDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                    price = diffDays * 100; // Prix par jour
+                }
+            } else if (reservationType === 'semaine') {
+                const startDate = new Date(document.getElementById('startDate').value);
+                const endDate = new Date(document.getElementById('endDate').value);
+
+                if (startDate && endDate) {
+                    const diffTime = Math.abs(endDate - startDate);
+                    const diffWeeks = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7));
+                    price = diffWeeks * 600; // Prix par semaine
+                }
+            }
+
+            document.getElementById('estimatedPrice').textContent = price;
         }
     </script>
 

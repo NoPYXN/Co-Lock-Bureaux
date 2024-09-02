@@ -85,13 +85,3 @@ footer {
     pointer-events: none;
     background-color: #ffffff;
 }
-
-.container {
-    flex: 1; /* Permet au container de prendre l'espace restant */
-    padding: 20px;
-    margin: 20px auto; /* Centre le container */
-    max-width: 800px;
-    background: #bebebe;
-    border-radius: 8px;
-    box-sizing: border-box; /* Inclut le padding dans la largeur */
-}
