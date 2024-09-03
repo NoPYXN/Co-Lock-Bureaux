@@ -26,39 +26,10 @@
         <a href="Contact.html">Contact</a>
     </div>
 
-    <div class="container">
-        <div class="card-detail" id="card-detail">
-            <!-- Formulaire de réservation -->
-            <form action="reservation.php" method="POST" id="reservationForm">
-                <p><strong>Réserver pour :</strong></p>
-                <label>
-                    <input type="radio" name="reservation_type" value="heure" required onclick="updateReservationFields()">
-                    Par heure
-                </label>
-                <br>
-                <label>
-                    <input type="radio" name="reservation_type" value="jour" onclick="updateReservationFields()">
-                    Par jour
-                </label>
-                <br>
-                <label>
-                    <input type="radio" name="reservation_type" value="semaine" onclick="updateReservationFields()">
-                    Par semaine
-                </label>
-                <br>
-
-                <!-- Sélecteurs de date/durée -->
-                <div id="datePickerContainer">
-                    <!-- Le contenu est généré dynamiquement -->
-                </div>
-
-                <!-- Estimation du prix -->
-                <p id="priceEstimate"><strong>Estimation du prix :</strong> <span id="estimatedPrice">0</span> €</p>
-
-                <input type="hidden" name="annonce_id" value="1"> <!-- Cet ID devrait être dynamique -->
-                <button type="submit" class="contact-owner">Réserver</button>
-            </form>
-        </div>
+    <div class="container ">
+        <div class="card-detail" id="card-detail"></div>
+            
+        
     </div>
 
     <footer>
@@ -106,9 +77,37 @@
                             </div>
                             <p><strong>Ville : </strong>${annonce.city}</p>
                             <p><strong>Adresse : </strong>${annonce.address}</p>
-                            <p><strong>Email du propriétaire : </strong><a href="mailto:${annonce.owner_email}">${annonce.owner_email}</a></p>
-                            <button class="contact-owner">Contacter le propriétaire</button>
+                            <p><strong>Email du propriétaire : </strong><a href="mailto:${annonce.email}">${annonce.email}</a></p>
                         </div>
+
+                        <form action="reservation.php" method="POST" id="reservationForm">
+                            <p><strong>Réserver pour :</strong></p>
+                            <label>
+                                <input type="radio" name="reservation_type" value="heure" required onclick="updateReservationFields()">
+                                Par heure
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="reservation_type" value="jour" onclick="updateReservationFields()">
+                                Par jour
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="reservation_type" value="semaine" onclick="updateReservationFields()">
+                                Par semaine
+                            </label>
+                            <br>
+
+
+                            <div id="datePickerContainer">
+                                
+                            </div>
+
+                            <p id="priceEstimate"><strong>Estimation du prix :</strong> <span id="estimatedPrice">0</span> €</p>
+
+                            <input type="hidden" name="annonce_id" value="1"> <!-- Cet ID devrait être dynamique -->
+                            <button type="submit" class="contact-owner">Réserver</button>
+                        </form>
                     `;
                 }
             } catch (error) {

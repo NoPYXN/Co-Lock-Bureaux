@@ -70,7 +70,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: auto; /* Assure que le footer est en bas de la page */
+    margin-bottom: auto; /* Assure que le footer est en bas de la page */
 }
 
 #particles-js {
