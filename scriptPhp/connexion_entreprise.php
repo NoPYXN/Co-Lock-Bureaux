@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Requête pour récupérer les entreprises
-$sql = "SELECT nom_entreprise AS title, logo AS image FROM entreprises"; 
+$sql = "SELECT nom_entreprise AS title, logoEntreprise AS image FROM entreprises"; 
 $result = $conn->query($sql);
 
 $entreprises = [];
@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $entreprises[] = [
             'title' => $row['nom_entreprise'],
-            'image' => $row['logo'] ? $row['logo'] : 'Bureau1.jpg'
+            'image' => $row['logoEntreprise'] ? $row['logoEntreprise'] : 'Bureau1.jpg'
         ];
     }
 }

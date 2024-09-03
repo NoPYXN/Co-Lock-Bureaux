@@ -53,13 +53,13 @@
         async function loadAnnonceDetails() {
             const annonceId = getQueryParam('id'); // Récupère l'ID depuis l'URL
             console.log(`Annonce ID: ${annonceId}`); // Débogage : afficher l'ID de l'annonce
-    
+
             try {
                 const response = await fetch(`../scriptPhp/getAnnonceDetails.php?id=${annonceId}`);
                 const annonce = await response.json();
-    
+
                 console.log(annonce); // Débogage : afficher les données reçues
-    
+
                 if (annonce.error) {
                     document.getElementById('card-detail').innerHTML = `<p>${annonce.error}</p>`;
                 } else {
@@ -71,9 +71,9 @@
                             <h1>${annonce.title}</h1>
                             <p class="description">${annonce.description}</p>
                             <div class="price-list">
-                                <p><strong>Prix par heure : </strong>${annonce.price_hour} €</p>
-                                <p><strong>Prix par jour : </strong>${annonce.price_day} €</p>
-                                <p><strong>Prix par semaine : </strong>${annonce.price_week} €</p>
+                                <p><strong>Prix par heure : </strong><span id="price-hour" data-price="${annonce.price_hour}">${annonce.price_hour} €</span></p>
+                                <p><strong>Prix par jour : </strong><span id="price-day" data-price="${annonce.price_day}">${annonce.price_day} €</span></p>
+                                <p><strong>Prix par semaine : </strong><span id="price-week" data-price="${annonce.price_week}">${annonce.price_week} €</span></p>
                             </div>
                             <p><strong>Ville : </strong>${annonce.city}</p>
                             <p><strong>Adresse : </strong>${annonce.address}</p>
@@ -98,14 +98,13 @@
                             </label>
                             <br>
 
-
                             <div id="datePickerContainer">
                                 
                             </div>
 
                             <p id="priceEstimate"><strong>Estimation du prix :</strong> <span id="estimatedPrice">0</span> €</p>
 
-                            <input type="hidden" name="annonce_id" value="1"> <!-- Cet ID devrait être dynamique -->
+                            <input type="hidden" name="annonce_id" value="${annonceId}">
                             <button type="submit" class="contact-owner">Réserver</button>
                         </form>
                     `;
@@ -114,6 +113,7 @@
                 console.error('Erreur lors du chargement des détails de l\'annonce:', error);
             }
         }
+
     
         loadAnnonceDetails();
 
@@ -151,6 +151,10 @@
             const reservationType = document.querySelector('input[name="reservation_type"]:checked').value;
             let price = 0;
 
+            const priceHour = parseFloat(document.getElementById('price-hour').getAttribute('data-price'));
+            const priceDay = parseFloat(document.getElementById('price-day').getAttribute('data-price'));
+            const priceWeek = parseFloat(document.getElementById('price-week').getAttribute('data-price'));
+
             if (reservationType === 'heure') {
                 const startTime = document.getElementById('startTime').value;
                 const endTime = document.getElementById('endTime').value;
@@ -162,7 +166,7 @@
 
                     const diffTime = Math.abs(end - start);
                     const diffHours = diffTime / (1000 * 60 * 60);
-                    price = diffHours * 15; // Prix par heure
+                    price = diffHours * priceHour;
                 }
             } else if (reservationType === 'jour') {
                 const startDate = new Date(document.getElementById('startDate').value);
@@ -171,7 +175,7 @@
                 if (startDate && endDate) {
                     const diffTime = Math.abs(endDate - startDate);
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-                    price = diffDays * 100; // Prix par jour
+                    price = diffDays * priceDay;
                 }
             } else if (reservationType === 'semaine') {
                 const startDate = new Date(document.getElementById('startDate').value);
@@ -180,12 +184,13 @@
                 if (startDate && endDate) {
                     const diffTime = Math.abs(endDate - startDate);
                     const diffWeeks = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7));
-                    price = diffWeeks * 600; // Prix par semaine
+                    price = diffWeeks * priceWeek;
                 }
             }
 
-            document.getElementById('estimatedPrice').textContent = price;
+            document.getElementById('estimatedPrice').textContent = price.toFixed(2);
         }
+
     </script>
     
 
