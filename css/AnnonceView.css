@@ -23,13 +23,15 @@
     display: flex;
     margin-right: 30px; /* Espacement augmenté pour plus de confort visuel */
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Permet à l'image de se réorganiser sur les petits écrans */
 }
 
 .card-image img {
-    width: 570px;
-    height: 324px;
-    justify-content: center;
+    max-width: 100%; /* L'image ne dépassera jamais la largeur de son conteneur */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
     border-radius: 8px;
+    object-fit: cover; /* L'image sera coupée pour s'adapter aux dimensions */
 }
 
 .card-content {
