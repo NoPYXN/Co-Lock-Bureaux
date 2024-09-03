@@ -30,9 +30,6 @@
         <!-- Les cartes seront insérées ici dynamiquement -->
     </div>
 
-    <a href="#" class="view-all">View All</a>
-
-
     <footer>
         &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
     </footer>

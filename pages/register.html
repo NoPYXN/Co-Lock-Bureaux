@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Co-Lock Bureaux</title>
+    <title>Inscription - Co-Lock Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/Account.css"> <!-- Vous pouvez ajuster ce fichier pour styliser la page -->
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
     <div class="header">
@@ -26,18 +26,28 @@
     </div>
 
     <div class="container">
-        <div class="login-form">
-            <h2>Connexion</h2>
-            <form action="login.php" method="POST">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required placeholder="Entrez votre email">
-                
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
-                
-                <button type="submit">Se connecter</button>
+        <div class="register-form">
+            <h2>Inscription</h2>
+            <form action="register.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required placeholder="Entrez votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required placeholder="Entrez votre email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirmez le mot de passe :</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirmez votre mot de passe">
+                </div>
+                <button type="submit">S'inscrire</button>
             </form>
-            <p>Pas encore de compte ? <a href="register.html">Inscrivez-vous ici</a>.</p>
+            <p>Vous avez déjà un compte ? <a href="login.html">Connectez-vous ici</a>.</p>
         </div>
     </div>
 
