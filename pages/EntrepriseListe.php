@@ -35,13 +35,14 @@
     </footer>
 
     <script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "20%";
-    }
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "20%";
+            document.getElementById("mySidenav").style.minWidth = "200px";
+        }
 
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
 
     // Fonction pour créer une nouvelle carte
     function createCard(imageSrc, title) {
