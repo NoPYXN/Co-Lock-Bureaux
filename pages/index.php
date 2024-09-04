@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Loc-k Bureaux</title>
+    <title>Index - Co-Loc-k Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -41,11 +41,12 @@
         }
 
         function closeNav() {
+            document.getElementById("mySidenav").style.minWidth = "0px";
             document.getElementById("mySidenav").style.width = "0";
         }
 
         // Fonction pour créer une nouvelle carte
-        function createCard(imageSrc, title, price, id) {
+        function createCard(imageSrc, title, price_hour, id) {
             // Crée un conteneur pour la carte
             const card = document.createElement('a');
             card.className = 'card';
@@ -62,7 +63,7 @@
 
             // Crée le prix
             const p = document.createElement('p');
-            p.textContent = price ? price + ' €' : '';
+            p.textContent = price_hour ? price_hour + ' €/h' : '';
 
             // Ajoute les éléments à la carte
             card.appendChild(img);
@@ -82,7 +83,7 @@
                 const annonces = await response.json();
 
                 annonces.forEach(annonce => {
-                    createCard(annonce.image, annonce.title, annonce.price, annonce.id); // Passe l'identifiant
+                    createCard(annonce.image, annonce.title, annonce.price_hour, annonce.id); // Passe l'identifiant
                 });
             } catch (error) {
                 console.error('Erreur lors du chargement des annonces:', error);

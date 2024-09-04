@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Loc-k Bureaux</title>
+    <title>Entreprise Liste - Co-Loc-k Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/EntrepriseListe.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     </div>
 
     <div id="particles-js"></div>
-    
+
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.php">Accueil</a>
@@ -41,42 +41,45 @@
         }
 
         function closeNav() {
+            document.getElementById("mySidenav").style.minWidth = "0px";
             document.getElementById("mySidenav").style.width = "0";
         }
 
-    // Fonction pour créer une nouvelle carte
-    function createCard(imageSrc, title) {
-    const card = document.createElement('div');
-    card.className = 'card';
+        // Fonction pour créer une nouvelle carte
+        function createCard(logoEntreprise, nom_entreprise, id) {
+            const card = document.createElement('a');
+            card.className = 'card';
+            card.href = `EntrepriseView.html?id=${id}`;
 
-    const img = document.createElement('img');
-    img.src = imageSrc ? "../images/" + imageSrc : "../images/Bureau1.jpg"; // Utilisation d'une image par défaut
-    img.alt = title;
+            const img = document.createElement('img');
+            console.log(logoEntreprise)
+            img.src = "../images/" + logoEntreprise;
+            img.alt = nom_entreprise;
 
-    const h3 = document.createElement('h3');
-    h3.textContent = title;
+            const h3 = document.createElement('h3');
+            h3.textContent = nom_entreprise;
 
-    card.appendChild(img);
-    card.appendChild(h3);
+            card.appendChild(img);
+            card.appendChild(h3);
 
-    document.getElementById('cards-container').appendChild(card);
-}
-
-    // Fonction pour charger les annonces
-    async function loadAnnonces() {
-        try {
-            const response = await fetch('../scriptPhp/connexion_entreprise.php'); // Assurez-vous que ce fichier existe et fonctionne
-            const annonces = await response.json();
-
-            console.log(annonces);
-
-            annonces.forEach(annonce => {
-                createCard(annonce.image, annonce.title);
-            });
-        } catch (error) {
-            console.error('Erreur lors du chargement des annonces:', error);
+            document.getElementById('cards-container').appendChild(card);
         }
-    }
+
+        // Fonction pour charger les annonces
+        async function loadAnnonces() {
+            try {
+                const response = await fetch('../scriptPhp/connexion_entreprise.php'); // Assurez-vous que ce fichier existe et fonctionne
+                const annonces = await response.json();
+
+                console.log(annonces);
+
+                annonces.forEach(annonce => {
+                    createCard(annonce.logoEntreprise, annonce.nom_entreprise, annonce.id);
+                });
+            } catch (error) {
+                console.error('Erreur lors du chargement des annonces:', error);
+            }
+        }
 
         // Charger les annonces au chargement de la page
         loadAnnonces();

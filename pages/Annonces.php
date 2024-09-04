@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Lock Bureaux</title>
+    <title>Annonce - Co-Loc-k Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Annonces.css">
 </head>
@@ -33,6 +33,7 @@
         }
 
         function closeNav() {
+            document.getElementById("mySidenav").style.minWidth = "0px";
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>

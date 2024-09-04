@@ -84,13 +84,8 @@ footer {
     background-color: #ffffff;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
-}
 
-/* @media (min-width:769px) {
+@media (min-width:769px) {
     body {
         display: flex;
         flex-direction: column;
@@ -102,4 +97,4 @@ body {
         flex-direction: column;
         min-height: 100vh;
     }
-} */
+}

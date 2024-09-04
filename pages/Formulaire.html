@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Création d'une annonce</title>
+    <title>Formulaire annonce - Co-Loc-k Bureaux</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Formulaire.css">
 </head>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="container">
-        <h1>Créer une Nouvelle Annonce</h1>
+        <h1>Créer une nouvelle annonce</h1>
         <form action="Annonces.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Nom de l'annonce</label>
@@ -81,6 +81,7 @@
         }
 
         function closeNav() {
+            document.getElementById("mySidenav").style.minWidth = "0px";
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>
