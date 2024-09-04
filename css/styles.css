@@ -1,12 +1,8 @@
 html, body {
-    height: 100%; /* Assure que le body prend toute la hauteur de l'écran */
+    height: 100%; 
     margin: 0;
     padding: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column; /* Permet de positionner le footer en bas */
+    overflow-x: hidden;
 }
 
 .header {
@@ -16,6 +12,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 10; /* Assure que le header reste au-dessus du contenu */
 }
 
 .header img {
@@ -27,7 +25,6 @@ body {
     cursor: pointer;
 }
 
-/* Style pour la barre latérale */
 .sidenav {
     height: 100%;
     width: 0;
@@ -38,6 +35,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    z-index: 20; /* Assure que la side-nav est au-dessus du contenu */
 }
 
 .sidenav a {
@@ -70,8 +68,10 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-bottom: auto; /* Assure que le footer est en bas de la page */
+    margin-top: auto; /* Pousse le footer en bas si la page est courte */
+    width: 100%;
 }
+
 
 #particles-js {
     position: absolute;
@@ -82,4 +82,19 @@ footer {
     z-index: -1;
     pointer-events: none;
     background-color: #ffffff;
+}
+
+
+@media (min-width:769px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+    }
+}
+@media (max-width: 768px) { 
+    body {
+        flex-direction: column;
+        min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+    }
 }
